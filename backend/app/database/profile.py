@@ -1,0 +1,33 @@
+from datetime import datetime
+from typing import TYPE_CHECKING
+import uuid
+from sqlalchemy import DateTime, String, func
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+
+from app.database.base import Base
+
+if TYPE_CHECKING:
+    from app.database.chat_thread import ChatThread
+
+
+class Profile(Base):
+    """Maps to Supabase auth.users profile record."""
+
+    __tablename__ = "profiles"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True)
+    email: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), nullable=False
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        server_default=func.now(),
+        onupdate=func.now(),
+        nullable=False,
+    )
+
+    threads: Mapped[list["ChatThread"]] = relationship(
+        "ChatThread", back_populates="user", cascade="all, delete-orphan"
+    )
