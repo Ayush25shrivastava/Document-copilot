@@ -35,14 +35,14 @@ This checklist breaks down the technical execution of Document Copilot for **Dri
 ---
 
 ## Phase 3: Data Ingestion & Indexing Pipeline
-- [ ] **SEC Filing Parser & Chunker (`backend/app/ingestion/`)**
-  - [ ] Build script to ingest SEC 10-K filings (2021–2025 filings for Apple, Amazon, Alphabet, Microsoft, NVIDIA in `data/downloads`).
-  - [ ] Parse filings into structured Markdown keeping section/page headers intact.
-  - [ ] Implement semantic chunking strategy (e.g. 500-1000 tokens with overlap) preserving company, filing type, fiscal year, section, and page metadata.
-- [ ] **Embeddings & Persistence**
-  - [ ] Generate OpenAI embeddings (`text-embedding-3-small` / `text-embedding-3-large`) for each chunk.
-  - [ ] Store raw source documents into `source_documents` and chunks/embeddings into `document_chunks`.
-  - [ ] Populate `tsvector` search column for keyword matching.
+- [x] **SEC Filing Parser & Chunker (`backend/app/ingestion/`)**
+  - [x] Build script to ingest SEC 10-K filings (2021–2025 filings for Apple, Amazon, Alphabet, Microsoft, NVIDIA in `data/downloads`).
+  - [x] Parse filings into structured Markdown keeping section/page headers intact.
+  - [x] Implement semantic chunking strategy (e.g. 500-1000 tokens with overlap) preserving company, filing type, fiscal year, section, and page metadata.
+- [x] **Embeddings & Persistence**
+  - [ ] Generate OpenAI embeddings (`text-embedding-3-small` / `text-embedding-3-large`) for each chunk (pending valid OpenAI API key).
+  - [x] Store raw source documents into `source_documents` and chunks into `document_chunks`.
+  - [x] Populate `tsvector` search column for keyword matching.
 
 ---
 
