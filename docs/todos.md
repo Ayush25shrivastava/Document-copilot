@@ -9,10 +9,10 @@ This checklist breaks down the technical execution of Document Copilot for **Dri
   - [x] Initialize Python virtual environment / `uv` project in `backend/`.
   - [x] Configure `backend/app/config.py` using `pydantic-settings` for all environment variables (`SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `DATABASE_URL`, `OPENAI_API_KEY`/`GEMINI_API_KEY`, `ALLOWED_ORIGINS`).
   - [x] Set up basic FastAPI application entrypoint in `backend/app/main.py` with CORS middleware.
-- [ ] **Frontend Baseline Setup**
-  - [ ] Initialize Vite + React + TypeScript app in `frontend/`.
-  - [ ] Configure `frontend/lib/env.ts` (`VITE_API_BASE_URL`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`).
-  - [ ] Set up Supabase browser client (`frontend/lib/supabase.ts`) and HTTP client with Bearer token header (`frontend/lib/http.ts`).
+- [x] **Frontend Baseline Setup**
+  - [x] Initialize Vite + React + TypeScript app in `frontend/`.
+  - [x] Configure `frontend/lib/env.ts` (`VITE_API_BASE_URL`, `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`).
+  - [x] Set up Supabase browser client (`frontend/lib/supabase.ts`) and HTTP client with Bearer token header (`frontend/lib/http.ts`).
 
 ---
 
@@ -72,8 +72,8 @@ This checklist breaks down the technical execution of Document Copilot for **Dri
 ---
 
 ## Phase 6: Frontend Chat Application & UI
-- [ ] **Authentication Flow**
-  - [ ] Build email login/sign-up screen with Supabase Auth.
+- [x] **Authentication Flow**
+  - [x] Build email login/sign-up screen with Supabase Auth.
 - [ ] **Chat Navigation & Thread Management**
   - [ ] Sidebar displaying past chat threads owned by the user.
   - [ ] Ability to create a new thread or load an existing thread history.
