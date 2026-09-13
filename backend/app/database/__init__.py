@@ -5,6 +5,11 @@ from app.database.document_chunk import DocumentChunk
 from app.database.message_citation import MessageCitation
 from app.database.profile import Profile
 from app.database.source_document import SourceDocument
+from app.database.supabase import (
+    get_supabase_admin_client,
+    get_supabase_client,
+    get_user_supabase_client,
+)
 
 __all__ = [
     "Base",
@@ -14,4 +19,8 @@ __all__ = [
     "SourceDocument",
     "DocumentChunk",
     "MessageCitation",
+    "get_supabase_client",
+    "get_supabase_admin_client",
+    "get_user_supabase_client",
 ]
+

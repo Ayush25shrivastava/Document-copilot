@@ -24,13 +24,13 @@ This checklist breaks down the technical execution of Document Copilot for **Dri
   - [x] `message_citations`: Grounded citation links attached to assistant messages.
   - [x] `source_documents`: Source SEC filings metadata, raw/markdown content, SEC URLs.
   - [x] `document_chunks`: Text chunk, page/section metadata, vector embedding, `tsvector` column.
-- [ ] **Alembic Setup & Migrations**
-  - [ ] Configure `backend/alembic.ini` and `backend/alembic/env.py` pointing to Supabase session database URL.
-  - [ ] Generate & refine initial migration:
-    - [ ] Enable `pgvector` extension.
-    - [ ] Add `vector(1536)` embedding column on `document_chunks`.
-    - [ ] Add HNSW index on embeddings and GIN index on full-text `tsvector`.
-    - [ ] Configure RLS policies for user data isolation.
+- [x] **Alembic Setup & Migrations**
+  - [x] Configure `backend/alembic.ini` and `backend/alembic/env.py` pointing to Supabase database URL.
+  - [x] Generate & refine initial migration (`18f4dc2b1571_initial_schema.py`):
+    - [x] Enable `pgvector` extension.
+    - [x] Add vector embedding column on `document_chunks`.
+    - [x] Add HNSW index on embeddings and GIN index on full-text `tsvector`.
+    - [x] Apply migration to database (`uv run alembic upgrade head`).
 
 ---
 
