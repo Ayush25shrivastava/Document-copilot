@@ -15,10 +15,6 @@ class Settings(BaseSettings):
     SUPABASE_SERVICE_ROLE_KEY: str
     DATABASE_URL: str
 
-    OPENAI_API_KEY: str | None = None
-    OPENAI_EMBEDDING_MODEL: str = "text-embedding-3-small"
-    OPENAI_EMBEDDING_DIMENSIONS: int = 1536
-
     GEMINI_API_KEY: str | None = None
     GEMINI_EMBEDDING_MODEL: str = "text-embedding-004"
     GEMINI_EMBEDDING_DIMENSIONS: int = 768
@@ -49,7 +45,5 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-if settings.OPENAI_API_KEY:
-    os.environ["OPENAI_API_KEY"] = settings.OPENAI_API_KEY
 if settings.GEMINI_API_KEY:
     os.environ["GEMINI_API_KEY"] = settings.GEMINI_API_KEY

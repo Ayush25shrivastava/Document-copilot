@@ -37,11 +37,7 @@ class DocumentChunk(Base):
         JSONB, nullable=True
     )
     embedding: Mapped[list[float] | None] = mapped_column(
-        Vector(
-            settings.GEMINI_EMBEDDING_DIMENSIONS
-            if settings.GEMINI_API_KEY
-            else settings.OPENAI_EMBEDDING_DIMENSIONS
-        ),
+        Vector(settings.GEMINI_EMBEDDING_DIMENSIONS),
         nullable=True,
     )
     search_vector: Mapped[Any | None] = mapped_column(TSVECTOR, nullable=True)

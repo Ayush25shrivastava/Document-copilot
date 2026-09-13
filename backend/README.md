@@ -18,7 +18,7 @@ Copy `.env.example` to `.env` if not already present and configure your credenti
 cp .env.example .env
 ```
 
-Ensure `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `DATABASE_URL`, and your API keys (`OPENAI_API_KEY` or `GEMINI_API_KEY`) are set in `.env`.
+Ensure `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `DATABASE_URL`, and your API keys (`GEMINI_API_KEY`) are set in `.env`.
 
 ### 3. Run the Development Server
 

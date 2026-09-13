@@ -7,7 +7,7 @@ This checklist breaks down the technical execution of Document Copilot for **Dri
 ## Phase 1: Environment & Foundation Setup
 - [x] **Backend Baseline Setup**
   - [x] Initialize Python virtual environment / `uv` project in `backend/`.
-  - [x] Configure `backend/app/config.py` using `pydantic-settings` for all environment variables (`SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `DATABASE_URL`, `OPENAI_API_KEY`/`GEMINI_API_KEY`, `ALLOWED_ORIGINS`).
+  - [x] Configure `backend/app/config.py` using `pydantic-settings` for all environment variables (`SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `DATABASE_URL`, `GEMINI_API_KEY`, `ALLOWED_ORIGINS`).
   - [x] Set up basic FastAPI application entrypoint in `backend/app/main.py` with CORS middleware.
 - [x] **Frontend Baseline Setup**
   - [x] Initialize Vite + React + TypeScript app in `frontend/`.
@@ -40,7 +40,7 @@ This checklist breaks down the technical execution of Document Copilot for **Dri
   - [x] Parse filings into structured Markdown keeping section/page headers intact.
   - [x] Implement semantic chunking strategy (e.g. 500-1000 tokens with overlap) preserving company, filing type, fiscal year, section, and page metadata.
 - [x] **Embeddings & Persistence**
-  - [ ] Generate OpenAI embeddings (`text-embedding-3-small` / `text-embedding-3-large`) for each chunk (pending valid OpenAI API key).
+  - [ ] Generate Gemini embeddings (`text-embedding-004`) for each chunk (pending valid Gemini API key).
   - [x] Store raw source documents into `source_documents` and chunks into `document_chunks`.
   - [x] Populate `tsvector` search column for keyword matching.
 
