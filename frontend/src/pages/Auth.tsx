@@ -63,60 +63,77 @@ export default function AuthPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 p-4 dark:bg-gray-900">
-      <Card className="w-full max-w-md">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold">
-            {isLogin ? 'Welcome back' : 'Create an account'}
-          </CardTitle>
-          <CardDescription>
+    <div className="flex min-h-screen w-full items-center justify-center bg-white p-4 text-gray-900 font-sans">
+      <div className="w-full max-w-[440px] rounded-2xl border border-gray-200/80 bg-white p-8 shadow-sm">
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-bold tracking-tight text-[#111111] my-0">
+            {isLogin ? 'Sign in' : 'Sign up'}
+          </h1>
+          <p className="mt-2 text-sm text-gray-500 font-normal">
             {isLogin
-              ? 'Enter your credentials to access Document Copilot.'
-              : 'Sign up to start chatting with your documents.'}
-          </CardDescription>
-        </CardHeader>
-        <form onSubmit={handleSubmit}>
-          <CardContent className="space-y-4">
-            {error && (
-              <div className="rounded-md bg-red-50 p-3 text-sm text-red-500 dark:bg-red-900/30 dark:text-red-400">
-                {error}
-              </div>
-            )}
-            {message && (
-              <div className="rounded-md bg-green-50 p-3 text-sm text-green-600 dark:bg-green-900/30 dark:text-green-400">
-                {message}
-              </div>
-            )}
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+              ? 'Use your email and password to access Document Copilot.'
+              : 'Create an account to access Document Copilot.'}
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {error && (
+            <div className="rounded-xl bg-red-50 p-3 text-sm text-red-600 font-medium">
+              {error}
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+          )}
+          {message && (
+            <div className="rounded-xl bg-green-50 p-3 text-sm text-green-600 font-medium">
+              {message}
             </div>
-          </CardContent>
-          <CardFooter className="flex flex-col space-y-4">
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
-              {isSubmitting
-                ? 'Please wait...'
-                : isLogin
-                  ? 'Sign in'
-                  : 'Sign up'}
-            </Button>
+          )}
+
+          <div className="space-y-1.5 text-left">
+            <label htmlFor="email" className="text-sm font-semibold text-gray-800">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              placeholder="dave@driftwood.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full h-11 rounded-xl border border-gray-200 px-3.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900/10 focus:border-gray-400 transition"
+            />
+          </div>
+
+          <div className="space-y-1.5 text-left">
+            <label htmlFor="password" className="text-sm font-semibold text-gray-800">
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full h-11 rounded-xl border border-gray-200 px-3.5 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-gray-900/10 focus:border-gray-400 transition"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full h-11 rounded-xl bg-[#373737] hover:bg-[#262626] text-white text-sm font-medium transition cursor-pointer disabled:opacity-50 mt-2"
+          >
+            {isSubmitting
+              ? 'Please wait...'
+              : isLogin
+                ? 'Sign in'
+                : 'Sign up'}
+          </button>
+
+          <div className="pt-1 text-center">
+            <span className="text-sm text-gray-500 font-normal">
+              {isLogin ? 'Need an account? ' : 'Already have an account? '}
+            </span>
             <button
               type="button"
               onClick={() => {
@@ -124,15 +141,13 @@ export default function AuthPage() {
                 setError(null)
                 setMessage(null)
               }}
-              className="text-sm text-blue-600 hover:underline dark:text-blue-400"
+              className="text-sm font-semibold text-gray-900 hover:underline cursor-pointer"
             >
-              {isLogin
-                ? "Don't have an account? Sign up"
-                : 'Already have an account? Sign in'}
+              {isLogin ? 'Sign up' : 'Sign in'}
             </button>
-          </CardFooter>
+          </div>
         </form>
-      </Card>
+      </div>
     </div>
   )
 }
