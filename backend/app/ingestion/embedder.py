@@ -23,11 +23,30 @@ def generate_embeddings(texts: list[str]) -> list[list[float]]:
     all_embeddings: list[list[float]] = []
 
     for i in range(0, len(texts), batch_size):
-        batch = texts[i : i + batch_size]
-        response = client.models.embed_content(
-            model=settings.GEMINI_EMBEDDING_MODEL,
-            contents=batch,
-        )
+        batch_texts = texts[i : i + batch_size]
+        batch = [[t] for t in batch_texts]
+        
+        max_retries = 7
+        response = None
+        for attempt in range(max_retries):
+            try:
+                response = client.models.embed_content(
+                    model=settings.GEMINI_EMBEDDING_MODEL,
+                    contents=batch,
+                )
+                break
+            except Exception as e:
+                import time
+                if hasattr(e, 'code') and e.code == 429 and attempt < max_retries - 1:
+                    sleep_time = 15 * (2 ** attempt)
+                    logger.warning("Rate limit hit. Retrying in %s seconds...", sleep_time)
+                    time.sleep(sleep_time)
+                else:
+                    raise
+
+        if response is None:
+            raise RuntimeError("Failed to generate embeddings after multiple retries.")
+            
         batch_embeddings = [data.values for data in response.embeddings]
         all_embeddings.extend(batch_embeddings)
 

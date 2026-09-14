@@ -16,8 +16,8 @@ class Settings(BaseSettings):
     DATABASE_URL: str
 
     GEMINI_API_KEY: str | None = None
-    GEMINI_EMBEDDING_MODEL: str = "text-embedding-004"
-    GEMINI_EMBEDDING_DIMENSIONS: int = 768
+    GEMINI_EMBEDDING_MODEL: str = "gemini-embedding-2"
+    GEMINI_EMBEDDING_DIMENSIONS: int = 3072
 
     ALLOWED_ORIGINS: str = "http://localhost:5173"
 

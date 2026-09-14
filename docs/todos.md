@@ -40,9 +40,10 @@ This checklist breaks down the technical execution of Document Copilot for **Dri
   - [x] Parse filings into structured Markdown keeping section/page headers intact.
   - [x] Implement semantic chunking strategy (e.g. 500-1000 tokens with overlap) preserving company, filing type, fiscal year, section, and page metadata.
 - [x] **Embeddings & Persistence**
-  - [ ] Generate Gemini embeddings (`text-embedding-004`) for each chunk (pending valid Gemini API key).
-  - [x] Store raw source documents into `source_documents` and chunks into `document_chunks`.
-  - [x] Populate `tsvector` search column for keyword matching.
+  - [x] Store raw source documents into `source_documents` and chunked content into `document_chunks` (Completed via `pipeline.py --no-embeds`).
+  - [x] Populate `tsvector` search column for full-text keyword matching across all 25 filings.
+  - [x] Create dedicated offline backfill script (`backend/app/ingestion/backfill_embeddings.py`) to safely batch-populate 3072-dimensional Gemini embeddings (`gemini-embedding-2`) into `document_chunks` while managing API rate limits.
+  - [/] Batch-generate Gemini vector embeddings for remaining chunks in Postgres (in progress).
 
 ---
 
